@@ -21,7 +21,9 @@
             i2,
             median;
 
-        numbers.sort();
+        numbers.sort(function (x, y) {
+            return x - y;
+        });
         if (len % 2 === 0) {
             i1 = len / 2 - 1;
             i2 = i1 + 1;
@@ -84,5 +86,24 @@
             std_deviation = Math.sqrt(variance);
 
         return std_deviation;
+    };
+    Array.prototype.percentile = function (p) {
+        var numbers = this.slice(),
+            n = numbers.length,
+            i = n * p / 100 + 0.5,
+            k = Math.floor(i),
+            f,
+            result;
+
+        numbers.sort(function (x, y) {
+            return x - y;
+        });
+        if (k === i) {
+            result = numbers[i];
+        } else {
+            f = i - k;
+            result = (1 - f) * numbers[k - 1] + f * numbers[k]
+        }
+        return result;
     };
 }(this));
