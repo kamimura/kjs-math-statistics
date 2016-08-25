@@ -8,6 +8,34 @@
         });
         return s;
     };
+    Array.prototype.min = function () {
+        var m = this[0],
+            num,
+            i,
+            max = this.length;
+
+        for (i = 1; i < max; i += 1) {
+            num = this[i];
+            if (num < m) {
+                m = num;
+            }
+        }
+        return m;
+    };
+    Array.prototype.max = function () {
+        var m = this[0],
+            num,
+            i,
+            max = this.length;
+
+        for (i = 1; i < max; i += 1) {
+            num = this[i];
+            if (num > m) {
+                m = num;
+            }
+        }
+        return m;
+    };    
     Array.prototype.mean = function () {
         var s = this.sum(),
             n = this.length;
